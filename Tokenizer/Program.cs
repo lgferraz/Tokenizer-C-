@@ -11,7 +11,7 @@ namespace Tokenizer
         static void Main(string[] args)
         {
             //entrada de teste
-            string entrada = "teste tokenizer= e ponto;{foda}&&m,&";
+            string entrada = "teste aa 'sdas'tokenizer= e ponto;{foda}&&m,&";
             //separadores
             string[] separadores = new string[] { "=", "{", "}", "(", ")", ";", ",", "." };
             //instancia o tokenizer

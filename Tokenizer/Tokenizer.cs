@@ -10,6 +10,7 @@ namespace Tokenizer
     {
         //percorrer a linha armazenando cada caractere ou tolken
         private int index;
+        private bool temAspas = false;
         private string caractere, linha, tolken;
         private List<string> tolkens = new List<string>();
         private string[] separadores;
@@ -36,7 +37,6 @@ namespace Tokenizer
         }
         private bool identificar()
         {
-
             if (this.index == linha.Length)
             {
                 finalizarTolken();
@@ -57,7 +57,25 @@ namespace Tokenizer
                 this.tolkens.Add(this.caractere);
                 this.caractere = null;
                 return true;
-            } else
+            } 
+            //implementação das aspas como string
+            else if (this.caractere == "\'" && this.temAspas == false) 
+            {
+                finalizarTolken();
+                this.temAspas = true;
+                this.tolken = this.tolken + this.caractere;
+                this.caractere = null;
+                return true;
+            }
+            else if (this.caractere == "\'" && this.temAspas == true)
+            {
+                this.temAspas = false;
+                this.tolken = this.tolken + this.caractere;
+                this.caractere = null;
+                finalizarTolken();
+                return true;
+            }
+            else
             {
                 this.tolken = this.tolken+this.caractere;
                 this.index++;
