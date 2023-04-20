@@ -75,6 +75,7 @@ namespace Tokenizer
                 finalizarTolken();
                 return true;
             }
+            //fim da implementação
             else
             {
                 this.tolken = this.tolken+this.caractere;
